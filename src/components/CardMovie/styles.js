@@ -32,7 +32,7 @@ export const MovieInfo = styled.div`
 export const Title = styled.h3`
   ${({ theme }) => css`
     font-weight: ${theme.font.normal};
-    font-size: ${theme.font.sizes.large};
+    font-size: ${theme.font.sizes.medium};
   `}
 `;
 
