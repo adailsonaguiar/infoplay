@@ -22,14 +22,13 @@ export const InputText = styled.input`
   `}
 `;
 
-export const WrapperIcon = styled.button`
+export const WrapperIcon = styled.div`
   ${({ theme }) => css`
     color: ${theme.colors.bgMain};
     font-size: 2rem;
     display: flex;
-    margin: 0;
-    border: 0;
-    outline: 0;
+
     align-items: center;
+    margin-right: 1rem;
   `}
 `;
