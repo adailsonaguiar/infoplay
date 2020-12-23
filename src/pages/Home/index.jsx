@@ -1,6 +1,5 @@
 import { useContext, useEffect } from "react";
 import api from "../../config/config";
-import BannerMain from "../../components/BannerMain";
 import CardMovie from "../../components/CardMovie";
 import { MoviesContext } from "../../contexts";
 
@@ -9,11 +8,11 @@ import { Link } from "react-router-dom";
 
 function Home() {
   const API_KEY = process.env.REACT_APP_KEY;
-  const { movies, setMovies } = useContext(MoviesContext);
+  const { movies } = useContext(MoviesContext);
 
   async function getData() {
     try {
-      const res = await api.get(`?s=action&apikey=${API_KEY}`);
+      const res = await api(1).get(`?s=action&apikey=${API_KEY}`);
       console.log(res);
     } catch (error) {
       console.error(error.response);
