@@ -9,8 +9,8 @@ export const MenuWrapper = styled.nav`
     z-index: 100;
 
     position: fixed;
-    padding-left: ${theme.spacings.medium};
-    padding-right: ${theme.spacings.medium};
+    padding-left: 5%;
+    padding-right: 5%;
 
     display: flex;
     align-items: center;
