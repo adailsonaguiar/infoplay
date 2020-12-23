@@ -13,6 +13,7 @@ export const CardWrapper = styled.div`
     margin-right: auto;
     cursor: pointer;
     transition: transform ${theme.transition.default};
+    color: ${theme.colors.white};
 
     &:hover {
       transform: scale(1.03);
