@@ -1,10 +1,35 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import debounce from "lodash.debounce";
 import logo from "../../assets/imgs/logo.svg";
+import api from "../../config/config";
 import TextField from "../TextField";
+import { MoviesContext } from "../../contexts";
+
 import * as S from "./styles";
 
 const Navbar = () => {
+  const API_KEY = process.env.REACT_APP_KEY;
+  const { movies, setMovies } = useContext(MoviesContext);
   const [isOpen, setIsOpen] = useState(false);
+
+  console.log("=====movie", movies);
+  async function getData(searchTherm) {
+    try {
+      const res = await api.get(`?s=${searchTherm}&apikey=${API_KEY}`);
+      setMovies(res.data.Search);
+    } catch (error) {
+      console.error(error.response);
+    }
+  }
+
+  const searchDebounce = debounce(getData, 800);
+
+  function handleValueInput(e) {
+    const { value } = e.target;
+    // setSearchTherm(value);
+    searchDebounce(value);
+  }
+
   return (
     <S.MenuWrapper>
       <S.SearchDeskWrapper>
@@ -12,8 +37,10 @@ const Navbar = () => {
           <S.LogoImage src={logo} alt="infoplay logo" />
         </a>
         <TextField
+          type="text"
           placeholder="Sobre qual filme você quer saber?"
           onClickClear={() => {}}
+          onChange={handleValueInput}
         />
       </S.SearchDeskWrapper>
       <S.SearchMobileWrapper>
@@ -24,8 +51,12 @@ const Navbar = () => {
         )}
         {isOpen && (
           <TextField
+            type="text"
             placeholder="Sobre qual filme você quer saber?"
-            onClickClear={() => setIsOpen(!isOpen)}
+            onClickClear={() => {
+              setIsOpen(!isOpen);
+            }}
+            onChange={handleValueInput}
           />
         )}
       </S.SearchMobileWrapper>

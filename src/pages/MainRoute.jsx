@@ -9,13 +9,9 @@ const MainRoute = ({ children }) => {
       flex: 1;
       background-color: ${theme.colors.mainBg};
       color: ${theme.colors.white};
-      padding-top: 94px;
+      padding-top: 7rem;
       padding-left: 5%;
       padding-right: 5%;
-
-      @media (max-width: 800px) {
-        padding-top: 40px;
-      }
     `}
   `;
   return (

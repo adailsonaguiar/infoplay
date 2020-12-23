@@ -17,6 +17,11 @@ export const MenuWrapper = styled.nav`
     justify-content: space-between;
 
     background: ${theme.colors.mainBg};
+
+    ${media.greaterThan("medium")`
+      padding-left: 8rem;
+      padding-right: 8rem;
+    `}
   `}
 `;
 
@@ -24,9 +29,9 @@ export const LogoImage = styled.img`
   max-width: 8rem;
   margin-right: 2rem;
 
-  @media (min-width: 800px) {
-    max-width: 10rem;
-  }
+  ${media.greaterThan("medium")`
+    max-width: 10rem;     
+  `}
 `;
 
 export const ButtonSearch = styled.button`
