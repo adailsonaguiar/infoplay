@@ -1,10 +1,25 @@
 import styled, { css } from "styled-components";
+import media from "styled-media-query";
 import Shimmer from "../../components/Shimmer";
 
-export const Container = styled.main``;
+export const Container = styled.main`
+  ${media.greaterThan("small")`
+   display: flex
+  `}
+`;
 
 export const Poster = styled.img`
   width: 100%;
+
+  ${media.greaterThan("small")`
+    width: 30%;
+  `}
+`;
+
+export const InfoWrapper = styled.div`
+  ${media.greaterThan("small")`
+    margin-left: 4rem;
+  `}
 `;
 
 export const PostShimmer = styled(Shimmer)`

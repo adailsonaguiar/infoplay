@@ -36,22 +36,26 @@ export default function DetailMovie() {
         <>
           <S.Poster src={movie.Poster} />
 
-          <Heading lineLeft lineColor="secondary">
-            {movie.Title}
-          </Heading>
-          <S.InfoText>{movie.Genre}</S.InfoText>
-          <S.SpaceWrapper>
-            <S.InfoText>{movie.Runtime}</S.InfoText>
-            <S.InfoText>IMDB {movie.imdbRating}</S.InfoText>
-          </S.SpaceWrapper>
-          <S.SpaceWrapper>
-            <S.InfoText>{movie.Plot}</S.InfoText>
-          </S.SpaceWrapper>
-          <S.SpaceWrapper>
-            <S.InfoText>Director: {movie.Director}</S.InfoText>
-            <S.InfoText>Release: {movie.Released}</S.InfoText>
-            <S.InfoText>Actors: {movie.Actors}</S.InfoText>
-          </S.SpaceWrapper>
+          <S.InfoWrapper>
+            <S.SpaceWrapper>
+              <Heading lineLeft lineColor="secondary">
+                {movie.Title}
+              </Heading>
+            </S.SpaceWrapper>
+            <S.InfoText>{movie.Genre}</S.InfoText>
+            <S.SpaceWrapper>
+              <S.InfoText>{movie.Runtime}</S.InfoText>
+              <S.InfoText>IMDB {movie.imdbRating}</S.InfoText>
+            </S.SpaceWrapper>
+            <S.SpaceWrapper>
+              <S.InfoText>{movie.Plot}</S.InfoText>
+            </S.SpaceWrapper>
+            <S.SpaceWrapper>
+              <S.InfoText>Director: {movie.Director}</S.InfoText>
+              <S.InfoText>Release: {movie.Released}</S.InfoText>
+              <S.InfoText>Actors: {movie.Actors}</S.InfoText>
+            </S.SpaceWrapper>
+          </S.InfoWrapper>
         </>
       )}
     </S.Container>
