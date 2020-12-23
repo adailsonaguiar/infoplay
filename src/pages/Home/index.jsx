@@ -5,6 +5,7 @@ import CardMovie from "../../components/CardMovie";
 import { MoviesContext } from "../../contexts";
 
 import * as S from "./styles";
+import { Link } from "react-router-dom";
 
 function Home() {
   const API_KEY = process.env.REACT_APP_KEY;
@@ -34,8 +35,10 @@ function Home() {
         Producers: Neal H. Moritz, Vin Diesel, Jeff Kirschenbaum, Joe Roth, Justin Lin, Clayton Townsend, Samantha Vincent"
       /> */}
       <S.MovieList>
-        {movies.map((movie) => (
-          <CardMovie movie={movie} />
+        {movies.map((movie, index) => (
+          <Link to={`/movie/${movie.imdbID}`} key={index}>
+            <CardMovie movie={movie} />
+          </Link>
         ))}
       </S.MovieList>
     </>

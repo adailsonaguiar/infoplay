@@ -13,6 +13,7 @@ export const CardWrapper = styled.div`
     margin-right: auto;
     cursor: pointer;
     transition: transform ${theme.transition.default};
+    color: ${theme.colors.white};
 
     &:hover {
       transform: scale(1.03);
@@ -32,7 +33,7 @@ export const MovieInfo = styled.div`
 export const Title = styled.h3`
   ${({ theme }) => css`
     font-weight: ${theme.font.normal};
-    font-size: ${theme.font.sizes.large};
+    font-size: ${theme.font.sizes.medium};
   `}
 `;
 

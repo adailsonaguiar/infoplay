@@ -1,7 +1,6 @@
 import * as S from "./styles";
 
 export default function CardMovie({ movie }) {
-  console.log(movie);
   return (
     <S.CardWrapper backgroundImage={movie.Poster}>
       <S.MovieInfo>

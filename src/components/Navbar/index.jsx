@@ -6,17 +6,19 @@ import TextField from "../TextField";
 import { MoviesContext } from "../../contexts";
 
 import * as S from "./styles";
+import { useHistory } from "react-router-dom";
 
 const Navbar = () => {
   const API_KEY = process.env.REACT_APP_KEY;
-  const { movies, setMovies } = useContext(MoviesContext);
+  const { setMovies } = useContext(MoviesContext);
   const [isOpen, setIsOpen] = useState(false);
+  const history = useHistory();
 
-  console.log("=====movie", movies);
   async function getData(searchTherm) {
     try {
       const res = await api.get(`?s=${searchTherm}&apikey=${API_KEY}`);
-      setMovies(res.data.Search);
+      if (res.data.Search) setMovies(res.data.Search);
+      history.push("/");
     } catch (error) {
       console.error(error.response);
     }
