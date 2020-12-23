@@ -9,14 +9,19 @@ export const MenuWrapper = styled.nav`
     z-index: 100;
 
     position: fixed;
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-left: ${theme.spacings.medium};
+    padding-right: ${theme.spacings.medium};
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
     background: ${theme.colors.mainBg};
+
+    ${media.greaterThan("medium")`
+      padding-left: 8rem;
+      padding-right: 8rem;
+    `}
   `}
 `;
 
@@ -24,9 +29,9 @@ export const LogoImage = styled.img`
   max-width: 8rem;
   margin-right: 2rem;
 
-  @media (min-width: 800px) {
-    max-width: 10rem;
-  }
+  ${media.greaterThan("medium")`
+    max-width: 10rem;     
+  `}
 `;
 
 export const ButtonSearch = styled.button`
