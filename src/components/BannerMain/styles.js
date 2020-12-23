@@ -49,15 +49,14 @@ ContentAreaContainer.Description = styled.p`
 
 ContentAreaContainer.Title = styled.h2`
   font-weight: 300;
-  font-size: 40px;
-  line-height: 1;
-  margin-top: 0;
+  line-height: 1.5;
   margin-right: 10px;
   margin-bottom: 32px;
+  text-align: center;
+  font-size: 2.6rem;
 
-  @media (max-width: 800px) {
-    text-align: center;
-    font-size: 32px;
+  @media (min-width: 800px) {
+    font-size: 3.5rem;
   }
 `;
 

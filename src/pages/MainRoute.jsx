@@ -7,7 +7,7 @@ const MainRoute = ({ children }) => {
   const Main = styled.main`
     ${({ theme }) => css`
       flex: 1;
-      background-color: ${theme.colors.black};
+      background-color: ${theme.colors.mainBg};
       color: ${theme.colors.white};
       padding-top: 94px;
       padding-left: 5%;
