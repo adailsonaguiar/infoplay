@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import debounce from "lodash.debounce";
 import logo from "../../assets/imgs/logo.svg";
 import logoRounded from "../../assets/imgs/logoRounded.svg";
@@ -13,8 +13,10 @@ const Navbar = () => {
   const API_KEY = process.env.REACT_APP_KEY;
   const { setListSearch } = useContext(MoviesContext);
   const history = useHistory();
+  const [loading, setLoading] = useState(false);
 
   async function getData(searchTherm) {
+    setLoading(true);
     try {
       const res = await api.get(`?s=${searchTherm}&apikey=${API_KEY}`);
       if (res.data.Search) setListSearch(res.data.Search);
@@ -22,6 +24,7 @@ const Navbar = () => {
     } catch (error) {
       console.error(error.response);
     }
+    setLoading(false);
   }
 
   const searchDebounce = debounce(getData, 800);
@@ -47,6 +50,8 @@ const Navbar = () => {
         <TextField
           type="text"
           placeholder="Sobre qual filme você quer saber?"
+          loading={loading}
+          searchField
           onChange={handleValueInput}
         />
       </S.SearchWrapper>
