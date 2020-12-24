@@ -2,12 +2,12 @@ import React from "react";
 import * as S from "./styles";
 import { MdSearch } from "react-icons/md";
 
-const TextField = ({ value, onChange, ...rest }) => {
+const TextField = ({ value, onChange, searchField, loading, ...rest }) => {
   return (
     <S.FormFieldWrapper>
-      <S.WrapperIcon>
-        <MdSearch />
-      </S.WrapperIcon>
+      {searchField && (
+        <S.WrapperIcon>{loading ? <S.Spinner /> : <MdSearch />}</S.WrapperIcon>
+      )}
       <S.InputText {...rest} value={value} onChange={onChange} />
     </S.FormFieldWrapper>
   );
