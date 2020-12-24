@@ -11,35 +11,34 @@ export default function Home() {
   const { movies, setHighlights } = useContext(MoviesContext);
   const [loading, setLoading] = useState(false);
 
-  function mapMoviePattern(movies) {
-    const newArrayMovies = movies.map((item) => {
-      return {
-        ...item,
-        Title: item.title,
-        Poster: `https://api.streamingmoviesright.com/storage/${item.thumbnail}`,
-        Plot: item.synopsis,
-        Runtime: item.runtime,
-        Genre: item.country,
-        imdbID: item.imdb_id,
-      };
-    });
-    return newArrayMovies;
-  }
-
-  async function getData() {
-    setLoading(true);
-    try {
-      const res = await axios.get(
-        "https://api.streamingmoviesright.com/site/movies"
-      );
-      console.log(res);
-      res && setHighlights(mapMoviePattern(res.data.data.data));
-    } catch (error) {
-      console.error(error.response);
-    }
-    setLoading(false);
-  }
   useEffect(() => {
+    function mapMoviePattern(movies) {
+      const newArrayMovies = movies.map((item) => {
+        return {
+          ...item,
+          Title: item.title,
+          Poster: `https://api.streamingmoviesright.com/storage/${item.thumbnail}`,
+          Plot: item.synopsis,
+          Runtime: item.runtime,
+          Genre: item.country,
+          imdbID: item.imdb_id,
+        };
+      });
+      return newArrayMovies;
+    }
+
+    async function getData() {
+      setLoading(true);
+      try {
+        const res = await axios.get(
+          "https://api.streamingmoviesright.com/site/movies"
+        );
+        res && setHighlights(mapMoviePattern(res.data.data.data));
+      } catch (error) {
+        console.error(error.response);
+      }
+      setLoading(false);
+    }
     !movies.highlights.length && getData();
   }, []);
   return (

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import debounce from "lodash.debounce";
 import logo from "../../assets/imgs/logo.svg";
 import logoRounded from "../../assets/imgs/logoRounded.svg";
