@@ -32,7 +32,6 @@ export default function Home() {
       const res = await axios.get(
         "https://api.streamingmoviesright.com/site/movies"
       );
-      console.log(res);
       res && setHighlights(mapMoviePattern(res.data.data.data));
     } catch (error) {
       console.error(error.response);
