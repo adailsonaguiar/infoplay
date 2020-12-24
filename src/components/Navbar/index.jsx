@@ -11,14 +11,14 @@ import { Link, useHistory } from "react-router-dom";
 
 const Navbar = () => {
   const API_KEY = process.env.REACT_APP_KEY;
-  const { setMovies } = useContext(MoviesContext);
+  const { setListSearch } = useContext(MoviesContext);
   const history = useHistory();
 
   async function getData(searchTherm) {
     try {
       const res = await api.get(`?s=${searchTherm}&apikey=${API_KEY}`);
-      if (res.data.Search) setMovies(res.data.Search);
-      history.push("/");
+      if (res.data.Search) setListSearch(res.data.Search);
+      history.push("/movies");
     } catch (error) {
       console.error(error.response);
     }

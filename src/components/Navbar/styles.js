@@ -18,9 +18,14 @@ export const MenuWrapper = styled.nav`
 
     background: ${theme.colors.mainBg};
 
+    ${media.greaterThan("large")`
+      padding-left: 25rem;
+      padding-right: 25rem;
+    `}
+
     ${media.greaterThan("medium")`
-      padding-left: 8rem;
-      padding-right: 8rem;
+      padding-left: 15rem;
+      padding-right: 15rem;
     `}
   `}
 `;
