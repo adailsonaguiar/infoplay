@@ -44,7 +44,7 @@ export default function Home() {
   return (
     <>
       <Heading lineLeft lineColor="secondary">
-        Destaques
+        Highlights
       </Heading>
       {loading ? (
         <S.MovieList>

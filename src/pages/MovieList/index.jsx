@@ -13,7 +13,7 @@ export default function MovieList() {
   return (
     <>
       <Heading lineLeft lineColor="secondary">
-        Busca
+        Search
       </Heading>
       <S.MovieList>
         {movies.listSearch.map((movie, index) => (
