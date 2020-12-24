@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import media from "styled-media-query";
-import Shimmer from "../../components/Shimmer";
 
 export const MovieList = styled.section`
   display: grid;
@@ -14,11 +13,4 @@ export const MovieList = styled.section`
   ${media.greaterThan("large")`
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   `}
-`;
-
-export const CardShimmer = styled(Shimmer)`
-  width: 15rem;
-  height: 22rem;
-  margin-bottom: 1rem;
-  border-radius: 8px;
 `;

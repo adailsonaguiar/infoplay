@@ -18,9 +18,14 @@ export const MenuWrapper = styled.nav`
 
     background: ${theme.colors.mainBg};
 
+    ${media.greaterThan("large")`
+      padding-left: 25rem;
+      padding-right: 25rem;
+    `}
+
     ${media.greaterThan("medium")`
-      padding-left: 8rem;
-      padding-right: 8rem;
+      padding-left: 15rem;
+      padding-right: 15rem;
     `}
   `}
 `;
@@ -34,14 +39,9 @@ export const LogoImage = styled.img`
   `}
 `;
 
-export const ButtonSearch = styled.button`
-  background: transparent;
-  outline: none;
-  border: none;
-
-  ${media.greaterThan("medium")`
-    display: none;
-  `}
+export const LogoImageRounded = styled.img`
+  max-width: 4rem;
+  margin-right: 2rem;
 `;
 
 export const IconSearch = styled(MdSearch)`
@@ -49,18 +49,20 @@ export const IconSearch = styled(MdSearch)`
   font-size: 3.2rem;
 `;
 
-export const SearchDeskWrapper = styled.div`
+export const SearchWrapper = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  ${media.lessThan("medium")`
+`;
+
+export const LogoWrapperMobile = styled.div`
+  ${media.greaterThan("small")`
     display: none;
   `}
 `;
 
-export const SearchMobileWrapper = styled.div`
-  width: 100%;
-  ${media.greaterThan("medium")`
+export const LogoWrapperDesk = styled.div`
+  ${media.lessThan("small")`
     display: none;
   `}
 `;

@@ -1,24 +1,24 @@
 import React, { useContext, useState } from "react";
 import debounce from "lodash.debounce";
 import logo from "../../assets/imgs/logo.svg";
+import logoRounded from "../../assets/imgs/logoRounded.svg";
 import api from "../../config/config";
 import TextField from "../TextField";
 import { MoviesContext } from "../../contexts";
 
 import * as S from "./styles";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const Navbar = () => {
   const API_KEY = process.env.REACT_APP_KEY;
-  const { setMovies } = useContext(MoviesContext);
-  const [isOpen, setIsOpen] = useState(false);
+  const { setListSearch } = useContext(MoviesContext);
   const history = useHistory();
 
   async function getData(searchTherm) {
     try {
       const res = await api.get(`?s=${searchTherm}&apikey=${API_KEY}`);
-      if (res.data.Search) setMovies(res.data.Search);
-      history.push("/");
+      if (res.data.Search) setListSearch(res.data.Search);
+      history.push("/movies");
     } catch (error) {
       console.error(error.response);
     }
@@ -28,45 +28,28 @@ const Navbar = () => {
 
   function handleValueInput(e) {
     const { value } = e.target;
-    // setSearchTherm(value);
     searchDebounce(value);
   }
 
   return (
     <S.MenuWrapper>
-      <S.SearchDeskWrapper>
-        <a href="/">
-          <S.LogoImage src={logo} alt="infoplay logo" />
-        </a>
+      <S.SearchWrapper>
+        <S.LogoWrapperDesk>
+          <Link to="/">
+            <S.LogoImage src={logo} alt="infoplay logo" />
+          </Link>
+        </S.LogoWrapperDesk>
+        <S.LogoWrapperMobile>
+          <Link to="/">
+            <S.LogoImageRounded src={logoRounded} alt="infoplay logo" />
+          </Link>
+        </S.LogoWrapperMobile>
         <TextField
           type="text"
           placeholder="Sobre qual filme você quer saber?"
-          onClickClear={() => {}}
           onChange={handleValueInput}
         />
-      </S.SearchDeskWrapper>
-      <S.SearchMobileWrapper>
-        {!isOpen && (
-          <a href="/">
-            <S.LogoImage src={logo} alt="infoplay logo" />
-          </a>
-        )}
-        {isOpen && (
-          <TextField
-            type="text"
-            placeholder="Sobre qual filme você quer saber?"
-            onClickClear={() => {
-              setIsOpen(!isOpen);
-            }}
-            onChange={handleValueInput}
-          />
-        )}
-      </S.SearchMobileWrapper>
-      {!isOpen && (
-        <S.ButtonSearch onClick={() => setIsOpen(!isOpen)}>
-          <S.IconSearch />
-        </S.ButtonSearch>
-      )}
+      </S.SearchWrapper>
     </S.MenuWrapper>
   );
 };

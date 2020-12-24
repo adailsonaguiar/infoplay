@@ -6,7 +6,7 @@ export default function CardMovie({ movie }) {
       <S.MovieInfo>
         <S.Title>{movie.Title}</S.Title>
         <S.MoreInfo>
-          <S.Imdb></S.Imdb>
+          <S.Imdb>{movie.imdb_rating}</S.Imdb>
           <S.Year>{movie.Year}</S.Year>
         </S.MoreInfo>
       </S.MovieInfo>
