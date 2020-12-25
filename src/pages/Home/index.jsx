@@ -1,14 +1,15 @@
 import { useContext, useEffect, useState } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
 import CardMovie from "../../components/CardMovie";
 import { MoviesContext } from "../../contexts";
-import { Link } from "react-router-dom";
-import axios from "axios";
+import Heading from "../../components/Heading";
+import Carousel from "../../components/Carousel";
 
 import * as S from "./styles";
-import Heading from "../../components/Heading";
 
 export default function Home() {
-  const { movies, setHighlights } = useContext(MoviesContext);
+  const { movies, setHighlights, setArrayTop10 } = useContext(MoviesContext);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -39,10 +40,28 @@ export default function Home() {
       }
       setLoading(false);
     }
-    !movies.highlights.length && getData();
+
+    if (!movies.highlights.length) getData();
   }, []);
+
+  useEffect(() => {
+    if (movies.highlights.length) {
+      function getRamdomHighlight() {
+        let arrayCarousel = [];
+        for (let i = 0; i < 10; i++) arrayCarousel.push(movies.highlights[i]);
+
+        setArrayTop10(arrayCarousel);
+      }
+      getRamdomHighlight();
+    }
+  }, [movies.highlights]);
+
   return (
     <>
+      <Heading lineLeft lineColor="secondary">
+        Trailers
+      </Heading>
+      <Carousel items={movies.arrayTop10} />
       <Heading lineLeft lineColor="secondary">
         Highlights
       </Heading>
