@@ -14,8 +14,14 @@ const AppProvider = ({ children }) => {
     setMovies({ ...movies, listSearch });
   }
 
+  function setArrayTop10(arrayTop10) {
+    setMovies({ ...movies, arrayTop10 });
+  }
+
   return (
-    <MoviesContext.Provider value={{ movies, setHighlights, setListSearch }}>
+    <MoviesContext.Provider
+      value={{ movies, setHighlights, setListSearch, setArrayTop10 }}
+    >
       {children}
     </MoviesContext.Provider>
   );
